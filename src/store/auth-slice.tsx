@@ -9,14 +9,21 @@ if (tokenData) {
 
 const localStorageUser: any = localStorage.getItem("user");
 const jsonLocalStorageUser: any = JSON.parse(localStorageUser);
-
+let initialUser;
+if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser === null) {
+    initialUser = null;
+} else if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser !== null) {
+    initialUser = jsonLocalStorageUser[0];
+} else {
+    initialUser = jsonLocalStorageUser;
+}
 
 const authSlice = createSlice({
 	name: "auth",
 	initialState: {
 		token: initialToken,
 		isLoggedIn: !!initialToken,
-		user: typeof jsonLocalStorageUser === "object" && !jsonLocalStorageUser[0] ? jsonLocalStorageUser : jsonLocalStorageUser[0],
+		user: initialUser,
 	},
 	reducers: {
 		login(state, action) {
@@ -35,7 +42,7 @@ const authSlice = createSlice({
 			state.isLoggedIn = false;
 		},
 		edit(state, action) {
-			state.user = action.payload.user;
+			state.user = action.payload.user[0];
 		},
 	},
 });
