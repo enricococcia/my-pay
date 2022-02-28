@@ -1,0 +1,68 @@
+.userStats {
+	width: 100%;
+	background-color: var(--color-bg-card);
+	padding: 1rem;
+	color: var(--color-foreground);
+    margin-top: 2rem;
+    box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+}
+
+.userStats h1 {
+	text-align: center;
+	color: var(--color-foreground);
+}
+
+.userStats .labelProgress {
+    text-align: center;
+    display: block;
+    font-weight: 600;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end
+}
+
+.modalActions button {
+    margin-left: 20px;
+}
+
+.userStats table tr th:last-child, 
+.userStats table tr td:last-child {
+    text-align: right;
+}
+
+.userStats table button svg { 
+    position: relative;
+    top: 3px;
+}
+.buttonViewExpensesContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+}
+
+.containerAllViews {
+    background-color: white;
+    padding: 0.5rem;    
+    margin: 1rem 0;
+    border: 2px solid var(--color-primary);
+}
+
+.itemExpense {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-bg-card);    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemExpense button {
+    margin-right: 5px;
+}
+
+.itemExpense button svg {
+    position: relative;
+    top: 2px;
+}

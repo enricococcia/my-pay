@@ -1,0 +1,90 @@
+.user {
+	width: 100%;
+	background-color: var(--color-bg-card);
+	padding: 1rem 1rem 0 1rem;
+	color: var(--color-foreground);
+    box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+}
+
+.user h1 {
+	text-align: center;
+	color: var(--color-foreground);
+}
+
+.user form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.userEditControl {
+	margin-bottom: 0.5rem;
+    width: 48%;
+    flex-basis: 48%;
+}
+
+.userEditControl p {
+	font-size: 0.85rem;
+	width: 100%;
+    text-align: left;
+}
+
+.actions {
+	margin: 1.5rem 0;
+    text-align: right;
+    width: 100%;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modalActions button {
+    margin-left:  10px;
+}
+
+.progressBudgetContainer {
+    position: relative;
+    width: 48%;
+    flex-basis: 48%;
+}
+
+.progressBudgetContainer .userEditControl {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.progressBudget {
+    position: absolute;
+    top: 50px;
+    left: 2px;
+    height: 4px;
+    background-color: var(--color-primary);
+    z-index: 2;
+}
+
+.progressBudgetContainer input {
+    position: relative;
+}
+
+.progressBudgetContainer input::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: calc(100% - 6px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: transparent;
+    border-left: 3px solid var(--color-primary);
+    border-right: 3px solid var(--color-primary);
+}
+
+@media (max-width: 767px){
+    .userEditControl, .progressBudgetContainer {
+        width: 100%;
+        flex-basis: 100%;
+    }
+}

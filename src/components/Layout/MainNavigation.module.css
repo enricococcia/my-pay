@@ -1,0 +1,58 @@
+.headerWrapper {
+	width: 100%;
+	background-color: var(--color-primary);
+}
+
+.header {
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header .logoLink {
+	text-decoration: none;
+}
+
+.header .logoLink svg {
+    width: 40px;
+    fill: var(--color-secondary);
+}
+
+.header .logoLink:hover svg,
+.header .logoLink:focus svg {
+	fill: var(--color-white);
+}
+
+.nav ul {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.nav li {
+	margin-left: 1.5rem;
+	font-size: 1.25rem;
+}
+
+.nav a {
+	text-decoration: none;
+	color: var(--color-secondary);
+}
+
+.nav a:hover,
+.nav a:focus,
+.nav a:active,
+.nav a.active {
+	color: var(--color-white);
+}
+
+.logout {
+    background: transparent;
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}

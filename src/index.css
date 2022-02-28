@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap");
+
+body {
+	--color-background: #f3f3f3;
+	--color-foreground: #000;
+	--color-primary: #ebb002;
+	--color-secondary: #111;
+	--color-success: #55cc44;
+	--color-error: #ca3e51;
+    --color-error-foreground: var(--color-error);
+    
+	--color-white: #fff;
+	--color-light-grey: #e3e3e3;
+	--color-link-hover: var(--color-primary);
+	--color-bg-card: var(--color-light-grey);
+	--color-button-hover: var(--color-light-grey);
+	--color-selection: var(--color-primary);
+	--color-input-background: #f7f5ef;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--color-background);
+	font-family: "Roboto", sans-serif;
+	color: var(--color-foreground);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+section:focus,
+.container:focus,
+.container-fluid:focus {
+	outline: none;
+}
+
+.container {
+	width: 1190px;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+	overflow: hidden;
+	position: relative;
+}
+
+.container-fluid {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+	overflow: hidden;
+	position: relative;
+}
+
+main {
+	position: relative;
+}
+
+a {
+	color: var(--color-foreground);
+}
+
+a:hover,
+a:active,
+a:focus {
+	color: var(--color-link-hover);
+}
+
+a.active {
+	color: var(--color-secondary);
+}
+
+::-moz-selection {
+	background: var(--color-selection);
+	color: var(--color-white);
+}
+
+::selection {
+	background: var(--color-selection);
+	color: var(--color-white);
+}
+
+/*Chrome*/
+progress::-webkit-progress-value {
+	background: var(--color-primary) !important;
+}
+
+progress[value] {
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 20px;
+}
+
+input[type="range"] {
+	-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+	width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type="range"]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	background-color: var(--color-primary);
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid #000000;
+	height: 36px;
+	width: 16px;
+	border-radius: 3px;
+	background: #ffffff;
+	position: relative;
+	z-index: 3;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+}
+
+th,
+td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+th {
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+}

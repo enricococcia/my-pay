@@ -1,0 +1,48 @@
+.auth {
+	margin: 3rem auto;
+	width: 95%;
+	max-width: 25rem;
+	border-radius: 6px;
+	background-color: var(--color-primary);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	padding: 1rem 1rem 0 1rem;
+	text-align: center;
+}
+
+.auth h1 {
+	text-align: center;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 1rem;
+}
+
+.auth label {
+	color: var(--color-foreground);
+    margin-top: 1rem;
+}
+
+.actions {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    background-color: white;
+    position: relative;
+    padding: 15px 0;
+    width: calc(100% + 30px);
+    left: -15px;
+    right: -15px;
+}
+
+.actions .toggle {
+	margin: 1rem 0 0 0;
+	background-color: transparent;
+	color: var(--color-foreground);
+    cursor: pointer;
+	border: none;
+	padding: 0.15rem 1.5rem;
+}
+
+.actions .toggle:hover {
+	background-color: transparent;
+	color: var(--color-link-hover);
+}

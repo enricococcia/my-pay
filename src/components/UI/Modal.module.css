@@ -1,0 +1,59 @@
+.modal {
+	position: fixed;
+	top: 20vh;
+	left: 5%;
+	width: 90%;
+	background-color: var(--color-background);;
+	padding: 1rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	z-index: 30;
+	animation: slide-down 300ms ease-out forwards;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.modal .content {
+	position: relative;
+}
+
+.modal .content .closeButton {
+	position: absolute;
+	top: -34px;
+	right: -16px;
+	width: 40px;
+	height: 40px;
+	background-color: var(--color-primary);
+    color: white;
+	font-size: 1.6rem;
+	cursor: pointer;
+	text-align: center;
+	line-height: 40px;
+	transition: background-color 0.5s ease;
+}
+
+.modal .content .closeButton:hover,
+.modal .content .closeButton:focus,
+.modal .content .closeButton:active {
+    color: var(--color-primary);
+	background-color: var(--color-button-hover);
+}
+
+@media (min-width: 768px) {
+	.modal {
+		width: 40rem;
+		left: calc(50% - 20rem);
+        max-height: 400px;
+        overflow-y: auto;
+	}
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-3rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

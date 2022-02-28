@@ -1,0 +1,42 @@
+.home {
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.home .chartContainer {
+    max-width: 400px;
+}
+
+.home .costContainer {
+    background-color: white;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+}
+
+.home .costContainer h3 {
+    margin: 0;
+}
+
+.home .costContainer p {
+    font-size: 3rem;
+    margin: 1rem 0;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.home .costContainer p.budget {
+    color: var(--color-success);
+}
+
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+        align-items: center;
+    }
+    .home .costContainer {
+        width: 100%;
+    }
+}
