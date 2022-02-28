@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { retrieveStoredToken } from "../helper/authHelper";
-import User from "../components/models/user";
 
 let initialToken;
 const tokenData = retrieveStoredToken();
@@ -8,16 +7,16 @@ if (tokenData) {
 	initialToken = tokenData.token;
 }
 
-const localStorageUser:any = localStorage.getItem("user");
+const localStorageUser: any = localStorage.getItem("user");
+const jsonLocalStorageUser: any = JSON.parse(localStorageUser);
 
-let initialUser:User = JSON.parse(localStorageUser) ? JSON.parse(localStorageUser) : null;
 
 const authSlice = createSlice({
 	name: "auth",
 	initialState: {
 		token: initialToken,
 		isLoggedIn: !!initialToken,
-		user: initialUser,
+		user: typeof jsonLocalStorageUser === "object" && !jsonLocalStorageUser[0] ? jsonLocalStorageUser : jsonLocalStorageUser[0],
 	},
 	reducers: {
 		login(state, action) {
@@ -25,8 +24,8 @@ const authSlice = createSlice({
 			localStorage.setItem("token", action.payload.token);
 			localStorage.setItem("expirationTime", expirationTime);
 			state.token = action.payload.token;
-            state.isLoggedIn = expirationTime;
-            state.user = action.payload.user[0];
+			state.isLoggedIn = expirationTime;
+			state.user = action.payload.user[0];
 		},
 		logout(state) {
 			localStorage.removeItem("token");
@@ -35,8 +34,8 @@ const authSlice = createSlice({
 			state.token = null;
 			state.isLoggedIn = false;
 		},
-        edit(state, action) {
-            state.user = action.payload.user;
+		edit(state, action) {
+			state.user = action.payload.user;
 		},
 	},
 });
