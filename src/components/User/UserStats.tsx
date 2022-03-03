@@ -103,7 +103,7 @@ const UserStatsPage = () => {
 					{expensesData?.result.map((item) => {
 						return (
 							<UserStatsExpenseItem
-								key={item.id}
+								key={item.eid}
 								id={item.id}
                                 eid={item.eid}
 								date={item.date}

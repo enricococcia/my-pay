@@ -62,6 +62,8 @@ const Home = () => {
 		],
 	};
     let monthExpenses = 0;
+	console.log(userData.budget);
+	console.log(expensesData?.month.value);
     if(expensesData?.month.value) {
         monthExpenses = expensesData?.month.value;
     }
@@ -80,7 +82,7 @@ const Home = () => {
 				<div className={classes.costContainer}>
 					<h3>Budget remaining:</h3>
 					<p className={classes.budget}>
-						{+userData.budget - monthExpenses}
+						{+userData.budget - +monthExpenses}
 						€
 					</p>
 				</div>

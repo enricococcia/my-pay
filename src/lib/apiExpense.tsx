@@ -1,7 +1,7 @@
 import { FIREBASE_DOMAIN } from "../const";
 import { uiActions } from "../store/ui-slice";
 import { retrieveStoredToken } from "../helper/authHelper";
-import { isToday, isThisWeek, isThisMonth } from "../helper/statsHelper";
+import { checkBetweenDate } from "../helper/statsHelper";
 import UserStats from "../components/models/userStats";
 let messageError = "Unknown Error";
 
@@ -26,14 +26,16 @@ export const getUserStats = (
 
 			let transformedExpenses = [];
 			for (const key in data) {
+				data[key].eid = key;
 				const expenseObj = {
-					eid: key,
 					...data[key],
 				};
+			
 				if (expenseObj.userId === userId) {
 					transformedExpenses.push(expenseObj);
 				}
 			}
+
 			let todayExpenses = [];
 			let todayExpensesValue = 0;
 			let weekExpenses = [];
@@ -43,17 +45,17 @@ export const getUserStats = (
 
 			for (const element of transformedExpenses) {
 				let date = new Date(element.date);
-				if (isToday(date)) {
+				if (checkBetweenDate(date, 1)) {
 					todayExpenses.push(element);
 					todayExpensesValue =
 						todayExpensesValue + parseFloat(element.cost);
 				}
-				if (isThisWeek(date)) {
+				if (checkBetweenDate(date, 7)) {
 					weekExpenses.push(element);
 					weekExpensesValue =
 						weekExpensesValue + parseFloat(element.cost);
 				}
-				if (isThisMonth(date)) {
+				if (checkBetweenDate(date, 30)) {
 					monthExpenses.push(element);
 					monthExpensesValue =
 						monthExpensesValue + parseFloat(element.cost);
