@@ -62,8 +62,7 @@ const Home = () => {
 		],
 	};
     let monthExpenses = 0;
-	console.log(userData.budget);
-	console.log(expensesData?.month.value);
+	
     if(expensesData?.month.value) {
         monthExpenses = expensesData?.month.value;
     }

@@ -392,7 +392,6 @@ export const changePasswordUser = (userData: User, password: string) => {
 					userName: userData.userName,
 					budget: userData.budget,
 				};
-                console.log(dataToSave);
 				dispatch(editUserData(dataToSave));
 				dispatch(
 					uiActions.showNotification({
