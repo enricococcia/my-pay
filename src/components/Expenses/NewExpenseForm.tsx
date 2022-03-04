@@ -1,150 +1,169 @@
 import { useSelector } from "react-redux";
 import useInput from "../../hooks/use-input";
-import SelectOption from "../models/selectOption";
-import classes from "./NewExpenseForm.module.css";
-import Button from "../UI/Button";
-import Input from "../UI/Input";
+import {
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import Expense from "../models/expense";
 import { RootState } from "../../store";
+import classes from "./NewExpenseForm.module.css";
 
 const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
+  const userData = useSelector((state: RootState) => state.auth.user);
+  const {
+    value: enteredTitle,
+    isValid: enteredTitleIsValid,
+    hasError: titleInputHasError,
+    valueChangeHandler: titleChangeHandler,
+    inputBlurHandler: titleBlurHandler,
+    reset: resetTitle,
+  } = useInput((value) => value.trim().length < 40, "");
+
+  const {
+    value: enteredDate,
+    isValid: enteredDateIsValid,
+    hasError: dateInputHasError,
+    valueChangeHandler: dateChangeHandler,
+    inputBlurHandler: dateBlurHandler,
+    reset: resetDate,
+  } = useInput((value) => value.trim() !== "", "");
+
+  const {
+    value: enteredType,
+    isValid: enteredTypeIsValid,
+    hasError: typeInputHasError,
+    valueChangeHandler: typeChangeHandler,
+    inputBlurHandler: typeBlurHandler,
+    reset: resetType,
+  } = useInput((value) => value.trim() !== "", "");
+
+  const {
+    value: enteredCost,
+    isValid: enteredCostIsValid,
+    hasError: costInputHasError,
+    valueChangeHandler: costChangeHandler,
+    inputBlurHandler: costBlurHandler,
+    reset: resetCost,
+  } = useInput((value) => +value > 0, "");
+
+  const submitHandler = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (
+      !enteredTitleIsValid ||
+      !enteredTypeIsValid ||
+      !enteredCostIsValid ||
+      !enteredDateIsValid
+    ) {
+      return;
+    }
+    const dataToSave = new Expense(
+      enteredTitle,
+      new Date(enteredDate),
+      enteredType,
+      enteredCost,
+      userData.uid
+    );
+
+    props.onSubmit(dataToSave);
+    resetTitle();
+    resetDate();
+    resetType();
+    resetCost();
+  };
+
+  let formIsValid = false;
+
+  if (
+    enteredTitleIsValid &&
+    enteredDateIsValid &&
+    enteredTypeIsValid &&
+    enteredCostIsValid
+  ) {
+    formIsValid = true;
+  }
+
+  return (
+    <div className={classes.newExpense}>
+      <h3>Add a new expense</h3>
+      <form onSubmit={submitHandler}>
+        <TextField
+          id="title"
+          label="Title"
+          variant="outlined"
+          value={enteredTitle}
+          className={classes.newExpenseControl}
+          onChange={titleChangeHandler}
+          onBlur={titleBlurHandler}
+          error={titleInputHasError}
+          helperText={titleInputHasError && "Please insert a valid title."}
+          required
+        />
+        <TextField
+          id="date"
+          type="date"
+          label=""
+          variant="outlined"
+          value={enteredDate}
+          className={classes.newExpenseControl}
+          onChange={dateChangeHandler}
+          onBlur={dateBlurHandler}
+          error={dateInputHasError}
+          helperText={dateInputHasError && "Please insert a valid date."}
+          required
+        />
+        <FormControl className={classes.newExpenseControl}>
+          <InputLabel id="type">Type *</InputLabel>
+          <Select
+            labelId="type"
+            id="type-select"
+            value={enteredType}
+            label="Type"
+			onChange={typeChangeHandler}
+			onBlur={typeBlurHandler}
+			error={typeInputHasError}
+			required
+			
+          >
+            <MenuItem value=""></MenuItem>
+			<MenuItem value="food-drink">Food and drink</MenuItem>
+			<MenuItem value="hobbies">Hobbies</MenuItem>
+			<MenuItem value="clothes">Clothes</MenuItem>
+			<MenuItem value="market">Market</MenuItem>
+			<MenuItem value="online">Shopping Online</MenuItem>
+			<MenuItem value="other">Other</MenuItem>
+          </Select>
+        </FormControl>
+		<TextField
+          id="cost"
+          type="number"
+          label="Cost"
+          variant="outlined"
+          value={enteredCost}
+          className={classes.newExpenseControl}
+          onChange={costChangeHandler}
+          onBlur={costBlurHandler}
+          error={costInputHasError}
+          helperText={costInputHasError && "Please insert a valid cost."}
+          required
+        />
     
-	const userData = useSelector((state:RootState) => state.auth.user);
-	const {
-		value: enteredTitle,
-		isValid: enteredTitleIsValid,
-		hasError: titleInputHasError,
-		valueChangeHandler: titleChangeHandler,
-		inputBlurHandler: titleBlurHandler,
-		reset: resetTitle,
-	} = useInput((value) => value.trim().length < 40, "");
-
-    const {
-		value: enteredDate,
-		isValid: enteredDateIsValid,
-		hasError: dateInputHasError,
-		valueChangeHandler: dateChangeHandler,
-		inputBlurHandler: dateBlurHandler,
-		reset: resetDate,
-	} = useInput((value) => value.trim() !== "", "");
-
-	const {
-		value: enteredType,
-		isValid: enteredTypeIsValid,
-		hasError: typeInputHasError,
-		valueChangeHandler: typeChangeHandler,
-		inputBlurHandler: typeBlurHandler,
-		reset: resetType,
-	} = useInput((value) => value.trim() !== "", "");
-
-	const {
-		value: enteredCost,
-		isValid: enteredCostIsValid,
-		hasError: costInputHasError,
-		valueChangeHandler: costChangeHandler,
-		inputBlurHandler: costBlurHandler,
-		reset: resetCost,
-	} = useInput((value) => +value > 0, "");
-
-	const submitHandler = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-		if (
-			!enteredTitleIsValid ||
-			!enteredTypeIsValid ||
-			!enteredCostIsValid ||
-            !enteredDateIsValid
-		) {
-			return;
-		}
-		const dataToSave = new Expense(enteredTitle, new Date(enteredDate), enteredType, enteredCost, userData.uid,);
-
-		props.onSubmit(dataToSave);
-		resetTitle();
-		resetDate();
-		resetType();
-		resetCost();
-	};
-
-	let formIsValid = false;
-
-	if (enteredTitleIsValid && enteredDateIsValid && enteredTypeIsValid && enteredCostIsValid) {
-		formIsValid = true;
-	}
-
-	return (
-		<section className={classes.newExpense}>
-			<h1>Add a new expense</h1>
-			<form onSubmit={submitHandler}>
-				<Input
-					id="title"
-					type="text"
-					label="Title"
-                    smallLabel="Enter a title"
-					value={enteredTitle}
-					onChange={titleChangeHandler}
-					onBlur={titleBlurHandler}
-					hasError={titleInputHasError}
-					validationLabel="Please insert a valid title."
-					required
-				/>
-                <Input
-					id="date"
-					type="date"
-					label="Date"
-                    smallLabel="Choose a date"
-					defaultValue={enteredDate}
-					onChange={dateChangeHandler}
-					onBlur={dateBlurHandler}
-					hasError={dateInputHasError}
-					validationLabel="Please insert a valid date."
-					required
-				/>
-				<Input
-					id="type"
-					type="select"
-					label="Type"
-                    smallLabel="Choose a type"
-					defaultValue={enteredType}
-					onChange={typeChangeHandler}
-					onBlur={typeBlurHandler}
-					hasError={typeInputHasError}
-					validationLabel="Please insert a valid type."
-					options={[
-						new SelectOption("0", "", ""),
-						new SelectOption("1", "food-drink", "Food and drink"),
-						new SelectOption("2", "hobbies", "Hobbies"),
-						new SelectOption("3", "clothes", "Clothes"),
-						new SelectOption("4", "market", "Market"),
-						new SelectOption("5", "online", "Shopping Online"),
-						new SelectOption("6", "other", "Other"),
-					]}
-					required
-				/>
-				<Input
-					id="cost"
-					type="number"
-					label="Cost"
-                    smallLabel="Enter the cost (€)"
-					value={enteredCost}
-					onChange={costChangeHandler}
-					onBlur={costBlurHandler}
-					hasError={costInputHasError}
-					validationLabel="Please insert a valid cost."
-					required
-				/>
-				<div className={classes.actions}>
-					<Button
-						type="submit"
-						version="secondary"
-						disabled={!formIsValid}
-						className={classes.submit}
-					>
-						Save
-					</Button>
-				</div>
-			</form>
-		</section>
-	);
+        <div className={classes.actions}>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={!formIsValid}
+            className={classes.submit}
+          >
+            Save
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default NewExpenseForm;

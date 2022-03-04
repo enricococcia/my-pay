@@ -1,24 +1,28 @@
 .auth {
+	background-color: white;
+	padding: 1rem 1rem 0 1rem;
+	color: var(--color-foreground);
+    box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
 	margin: 3rem auto;
 	width: 95%;
 	max-width: 25rem;
 	border-radius: 6px;
-	background-color: var(--color-primary);
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	padding: 1rem 1rem 0 1rem;
 	text-align: center;
 }
 
-.auth h1 {
+.auth h3 {
 	text-align: center;
-    border-bottom: 2px solid var(--color-secondary);
     padding-bottom: 1rem;
 }
 
-.auth label {
-	color: var(--color-foreground);
-    margin-top: 1rem;
+.auth .authControl {
+	width: 100%;
+	margin-bottom: 1rem;
 }
+
+.authControl + div {
+	margin-bottom: 1rem!important;
+} 
 
 .actions {
 	margin-top: 1.5rem;
@@ -34,15 +38,5 @@
 }
 
 .actions .toggle {
-	margin: 1rem 0 0 0;
-	background-color: transparent;
-	color: var(--color-foreground);
-    cursor: pointer;
-	border: none;
-	padding: 0.15rem 1.5rem;
-}
-
-.actions .toggle:hover {
-	background-color: transparent;
-	color: var(--color-link-hover);
+	margin-top: 1rem;
 }

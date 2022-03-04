@@ -1,6 +1,6 @@
 .user {
 	width: 100%;
-	background-color: var(--color-bg-card);
+	background-color: white;
 	padding: 1rem 1rem 0 1rem;
 	color: var(--color-foreground);
     box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
@@ -23,6 +23,11 @@
     flex-basis: 48%;
 }
 
+.passwordFormControl {
+    width: 100%;
+    margin: 1rem 0;
+}
+
 .userEditControl p {
 	font-size: 0.85rem;
 	width: 100%;
@@ -38,6 +43,7 @@
 .modalActions {
     display: flex;
     justify-content: flex-end;
+    margin-top: 2rem;
 }
 
 .modalActions button {
@@ -45,46 +51,14 @@
 }
 
 .progressBudgetContainer {
-    position: relative;
-    width: 48%;
-    flex-basis: 48%;
-}
-
-.progressBudgetContainer .userEditControl {
-    width: 100%;
-    flex-basis: 100%;
-}
-
-.progressBudget {
-    position: absolute;
-    top: 50px;
-    left: 2px;
-    height: 4px;
-    background-color: var(--color-primary);
-    z-index: 2;
-}
-
-.progressBudgetContainer input {
-    position: relative;
-}
-
-.progressBudgetContainer input::before {
-    content: "";
     display: block;
-    height: 100%;
-    width: calc(100% - 6px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background-color: transparent;
-    border-left: 3px solid var(--color-primary);
-    border-right: 3px solid var(--color-primary);
+    margin-top: 1rem;
+    position: relative;
+    width: 100%;
 }
 
-@media (max-width: 767px){
-    .userEditControl, .progressBudgetContainer {
-        width: 100%;
-        flex-basis: 100%;
-    }
+.progressBudgetContainer p {
+    display: block;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
 }

@@ -1,6 +1,8 @@
+import { Button } from "@mui/material";
 import ReactDOM from "react-dom";
 import Backdrop from "./Backdrop";
 import classes from "./Modal.module.css";
+import CloseIcon from '@mui/icons-material/Close';
 
 const portalElement = document.getElementById("overlay-root") as HTMLElement;
 
@@ -15,14 +17,11 @@ const Modal: React.FC<{ onClose: () => void; className?: string }> = (
 					<div>
 						<div className={classes.modal}>
 							<div className={classes.content}>
-								<div
+								<Button
 									className={classes.closeButton}
-									onClick={props.onClose}
-									role="button"
-									tabIndex={0}
-								>
-									X
-								</div>
+									onClick={props.onClose}>
+									<CloseIcon />
+								</Button>
 								{props.children}
 							</div>
 						</div>

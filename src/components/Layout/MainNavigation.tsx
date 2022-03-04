@@ -3,8 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import { Logo } from "../../assets/svg";
 import classes from "./MainNavigation.module.css";
 import { authActions } from "../../store/auth-slice";
-import { AiOutlineLogout } from "react-icons/ai";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { RootState } from "../../store";
+import { Button } from "@mui/material";
 
 const MainNavigation = () => {
 	const dispatch = useDispatch();
@@ -30,12 +31,12 @@ const MainNavigation = () => {
 						</NavLink>
 					</li>
 					<li>
-						<button
+						<Button
 							className={classes.logout}
 							onClick={() => dispatch(authActions.logout())}
 						>
-							<AiOutlineLogout />
-						</button>
+							<LogoutIcon />
+						</Button>
 					</li>
 				</ul>
 			</nav>

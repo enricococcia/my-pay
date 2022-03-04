@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useScroll from "../../hooks/use-scroll";
 import { deleteUser } from "../../lib/apiUser";
-import Button from "../UI/Button";
+import { Button } from "@mui/material";
 import Modal from "../UI/Modal";
 import classes from "./UserWidget.module.css";
 import ChangePasswordForm from "./ChangePasswordForm";
@@ -40,14 +40,15 @@ const UserWidget = () => {
 					</div>
 					<div className={classes.widgetActions}>
 						<Button
-							version="secondary"
+							variant="contained"
 							onClick={() => setEditModalOpened(true)}
 						>
 							Settings
 						</Button>
 						<Button
-							version="delete"
+							variant="contained"
 							onClick={() => setDeleteModalOpened(true)}
+							color="error"
 						>
 							Delete
 						</Button>
@@ -75,13 +76,13 @@ const UserWidget = () => {
 					</p>
 					<div className={classes.modalActions}>
 						<Button
-							version="secondary"
 							onClick={() => setDeleteModalOpened(false)}
 						>
 							Back
 						</Button>
 						<Button
-							version="delete"
+							variant="contained"
+							color="error"
 							onClick={() =>
 								dispatch(deleteUser(userData.uid, userData.id))
 							}

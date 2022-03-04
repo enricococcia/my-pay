@@ -13,7 +13,11 @@ let initialUser;
 if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser === null) {
     initialUser = null;
 } else if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser !== null) {
-    initialUser = jsonLocalStorageUser[0];
+	if( Array.isArray(jsonLocalStorageUser)) {
+		initialUser = jsonLocalStorageUser[0];
+	} else {
+		initialUser = jsonLocalStorageUser;
+	}
 } else {
     initialUser = jsonLocalStorageUser;
 }

@@ -22,20 +22,10 @@
 	right: -16px;
 	width: 40px;
 	height: 40px;
-	background-color: var(--color-primary);
-    color: white;
 	font-size: 1.6rem;
 	cursor: pointer;
 	text-align: center;
 	line-height: 40px;
-	transition: background-color 0.5s ease;
-}
-
-.modal .content .closeButton:hover,
-.modal .content .closeButton:focus,
-.modal .content .closeButton:active {
-    color: var(--color-primary);
-	background-color: var(--color-button-hover);
 }
 
 @media (min-width: 768px) {
