@@ -41,7 +41,7 @@ const UserStatsPage = () => {
 
   return (
     <div className={classes.userStats}>
-      <h3>User Stats</h3>
+      <h3>Hi {userData.name}, here your expenses</h3>
 
       {expensesData?.month.value && (
         <>

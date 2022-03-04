@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import UserWidget from "../../components/User/UserWidget";
 import UserForm from "../../components/User/UserForm";
-import UserStats from "../../components/User/UserStats";
 import classes from "./Profile.module.css";
 import { RootState } from "../../store";
 const Profile = () => {
@@ -19,7 +18,6 @@ const Profile = () => {
 			<UserWidget />
 			<div className={classes.profileContainer}>
 				<UserForm />
-				<UserStats />
 			</div>
 		</div>
 	);

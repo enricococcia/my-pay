@@ -3,8 +3,8 @@
 	background-color: white;
 	padding: 1rem;
 	color: var(--color-foreground);
-    margin-top: 2rem;
     box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+    margin-bottom: 1rem;
 }
 
 .userStats h1 {

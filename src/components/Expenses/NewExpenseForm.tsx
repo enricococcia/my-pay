@@ -90,67 +90,75 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
     <div className={classes.newExpense}>
       <h3>Add a new expense</h3>
       <form onSubmit={submitHandler}>
-        <TextField
-          id="title"
-          label="Title"
-          variant="outlined"
-          value={enteredTitle}
-          className={classes.newExpenseControl}
-          onChange={titleChangeHandler}
-          onBlur={titleBlurHandler}
-          error={titleInputHasError}
-          helperText={titleInputHasError && "Please insert a valid title."}
-          required
-        />
-        <TextField
-          id="date"
-          type="date"
-          label=""
-          variant="outlined"
-          value={enteredDate}
-          className={classes.newExpenseControl}
-          onChange={dateChangeHandler}
-          onBlur={dateBlurHandler}
-          error={dateInputHasError}
-          helperText={dateInputHasError && "Please insert a valid date."}
-          required
-        />
-        <FormControl className={classes.newExpenseControl}>
-          <InputLabel id="type">Type *</InputLabel>
-          <Select
-            labelId="type"
-            id="type-select"
-            value={enteredType}
-            label="Type"
-			onChange={typeChangeHandler}
-			onBlur={typeBlurHandler}
-			error={typeInputHasError}
-			required
-			
-          >
-            <MenuItem value=""></MenuItem>
-			<MenuItem value="food-drink">Food and drink</MenuItem>
-			<MenuItem value="hobbies">Hobbies</MenuItem>
-			<MenuItem value="clothes">Clothes</MenuItem>
-			<MenuItem value="market">Market</MenuItem>
-			<MenuItem value="online">Shopping Online</MenuItem>
-			<MenuItem value="other">Other</MenuItem>
-          </Select>
-        </FormControl>
-		<TextField
-          id="cost"
-          type="number"
-          label="Cost"
-          variant="outlined"
-          value={enteredCost}
-          className={classes.newExpenseControl}
-          onChange={costChangeHandler}
-          onBlur={costBlurHandler}
-          error={costInputHasError}
-          helperText={costInputHasError && "Please insert a valid cost."}
-          required
-        />
-    
+        <div className={classes.newExpenseControl}>
+          <TextField
+            id="title"
+            label="Title"
+            variant="outlined"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+            onBlur={titleBlurHandler}
+            error={titleInputHasError}
+            helperText={titleInputHasError && "Please insert a valid title."}
+            fullWidth
+            required
+          />
+        </div>
+        <div className={classes.newExpenseControl}>
+          <TextField
+            id="date"
+            type="date"
+            label=""
+            variant="outlined"
+            value={enteredDate}
+            onChange={dateChangeHandler}
+            onBlur={dateBlurHandler}
+            error={dateInputHasError}
+            helperText={dateInputHasError && "Please insert a valid date."}
+            fullWidth
+            required
+          />
+        </div>
+        <div className={classes.newExpenseControl}>
+          <FormControl 
+              fullWidth>
+            <InputLabel id="type">Type *</InputLabel>
+            <Select
+              labelId="type"
+              id="type-select"
+              value={enteredType}
+              label="Type"
+              onChange={typeChangeHandler}
+              onBlur={typeBlurHandler}
+              error={typeInputHasError}
+              required
+            >
+              <MenuItem value=""></MenuItem>
+              <MenuItem value="food-drink">Food and drink</MenuItem>
+              <MenuItem value="hobbies">Hobbies</MenuItem>
+              <MenuItem value="clothes">Clothes</MenuItem>
+              <MenuItem value="market">Market</MenuItem>
+              <MenuItem value="online">Shopping Online</MenuItem>
+              <MenuItem value="other">Other</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={classes.newExpenseControl}>
+          <TextField
+            id="cost"
+            type="number"
+            label="Cost"
+            variant="outlined"
+            value={enteredCost}
+            onChange={costChangeHandler}
+            onBlur={costBlurHandler}
+            error={costInputHasError}
+            fullWidth
+            helperText={costInputHasError && "Please insert a valid cost."}
+            required
+          />
+        </div>
+
         <div className={classes.actions}>
           <Button
             type="submit"

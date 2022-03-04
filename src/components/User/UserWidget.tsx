@@ -59,8 +59,7 @@ const UserWidget = () => {
 				<Modal onClose={() => setEditModalOpened(false)}>
 					<h3>Edit</h3>
 					<p>
-						Ciao <strong>{userData.name}</strong>, compila il form
-						per modificare la tua password.
+						Hello <strong>{userData.name}</strong>, write here your new password.
 					</p>
 					<ChangePasswordForm
 						toggleModalEditHandler={setEditModalOpened}
@@ -71,8 +70,7 @@ const UserWidget = () => {
 				<Modal onClose={() => setDeleteModalOpened(false)}>
 					<h3>Delete</h3>
 					<p>
-						Ciao <strong>{userData.name}</strong>, sei sicuro di
-						voler cancellare il tuo profilo?
+						Hello <strong>{userData.name}</strong>, are you sure to delete your account?
 					</p>
 					<div className={classes.modalActions}>
 						<Button

@@ -9,7 +9,7 @@ import NewExpense from "./pages/NewExpense/NewExpense";
 import { RootState } from "./store";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
-//https://fkhadra.github.io/react-toastify/introduction
+import Stats from "./pages/Stats/Stats";
 const App = () => {
 
 	const tokenData = retrieveStoredToken();
@@ -37,6 +37,10 @@ const App = () => {
 				<Route
 					path={`${process.env.PUBLIC_URL}/create`}
 					element={!isLoggedIn ? navigateToLogin : <NewExpense />}
+				/>
+				<Route
+					path={`${process.env.PUBLIC_URL}/stats`}
+					element={!isLoggedIn ? navigateToLogin : <Stats />}
 				/>
                 <Route
 					path={`${process.env.PUBLIC_URL}/profile`}

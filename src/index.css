@@ -38,16 +38,16 @@ section:focus,
 
 .container {
 	width: 1190px;
-	margin: 0 auto;
+	margin: 1rem auto;
 	max-width: 100%;
 	padding: 0 15px;
 	overflow: hidden;
-	position: relative;
+	position: relative;    
 }
 
 .container-fluid {
 	width: 100%;
-	margin: 0 auto;
+	margin: 1rem auto;
 	max-width: 100%;
 	padding: 0 15px;
 	overflow: hidden;

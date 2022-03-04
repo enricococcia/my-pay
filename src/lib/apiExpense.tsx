@@ -162,13 +162,10 @@ export const getUserStats = (
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -209,13 +206,10 @@ export const addExpense = (expenseData: {}, callback?: () => void) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -252,13 +246,10 @@ export const deleteExpense = (id: string, callback?: () => void) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };

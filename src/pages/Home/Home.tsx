@@ -6,17 +6,19 @@ import { getUserStats } from "../../lib/apiExpense";
 import { RootState } from "../../store";
 import UserStats from "../../components/models/userStats";
 import classes from "./Home.module.css";
-import { Paper, Stack } from "@mui/material";
+import { Paper, Stack, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userData = useSelector((state: RootState) => state.auth.user);
 
   const [expensesData, setExpensesData] = useState<UserStats>();
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserStats(userData.uid, setExpensesData));
@@ -77,32 +79,44 @@ const Home = () => {
   }
 
   return (
-    <div className="container">
-      <Stack
-        spacing={2}
-        direction={{ xs: "column", sm: "row" }}
-		
-        justifyContent="center"
-		alignItems={{ xs: "stretch", sm: "center" }}
-      >
-        <Item>
-          {" "}
-          <h3>Types Chart</h3>
-          <Pie data={data} />
-        </Item>
-        <Item>
-          {" "}
-          <h3>Today's expenses:</h3>
-          <p className={classes.budgetToday}>{expensesData?.today.value}€</p>
-        </Item>
-        <Item>
+    <>
+      <div className="container"  style={{ textAlign: "center"}}>
+        <Button
+          size="large"
+         
+          onClick={() => navigate(`${process.env.PUBLIC_URL}/create`)}
+          endIcon={<AddIcon />}
+        >
+          Add New Expense
+        </Button>
+      </div>
+      <div className="container">
+        <Stack
+          spacing={2}
+          direction={{ xs: "column", sm: "row" }}
+          justifyContent={{ xs: "stretch", sm: "space-between" }}
+          alignItems={{ xs: "stretch", sm: "center" }}
+          className={classes.stack}
+        >
+          <Item>
+            {" "}
+            <h3>Types Chart</h3>
+            <Pie data={data} />
+          </Item>
+          <Item>
+            {" "}
+            <h3>Today's expenses:</h3>
+            <p className={classes.budgetToday}>{expensesData?.today.value}€</p>
+          </Item>
+          <Item>
             <h3>Budget remaining:</h3>
             <p className={classes.budgetRemaining}>
               {+userData.budget - +monthExpenses}€
             </p>
-        </Item>
-      </Stack>
-    </div>
+          </Item>
+        </Stack>
+      </div>{" "}
+    </>
   );
 };
 

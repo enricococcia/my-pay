@@ -4,6 +4,7 @@
 	padding: 1rem 1rem 0 1rem;
 	color: var(--color-foreground);
     box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+    margin-bottom: 1rem;
 }
 
 .user h1 {

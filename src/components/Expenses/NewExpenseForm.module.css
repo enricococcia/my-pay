@@ -1,9 +1,8 @@
 .newExpense {
   background-color: white;
   padding: 1rem 4rem;
-  margin: 1rem 0;
-
   box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
+  margin-bottom: 1rem;
 }
 
 .newExpense h3 {
@@ -19,10 +18,11 @@
 .newExpenseControl {
   width: 48%;
   flex-basis: 48%;
+  margin-bottom: 1rem;
 }
 
-.newExpenseControl + div {
-  margin-bottom: 1rem;
+.newExpenseControl .newExpenseInput {
+  width: 100%;
 }
 
 .newExpense .actions {

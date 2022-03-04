@@ -59,13 +59,10 @@ export const authUser = (isLogin: boolean, email: string, password: string) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -124,13 +121,10 @@ export const fetchUserData = (
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -169,26 +163,21 @@ export const sendUserData = (idToken: string, email: string) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "success",
-					title: "Success!",
+					title: "Success",
 					message: "Creation user successfully!",
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		} catch (error) {
 			if (error instanceof Error) messageError = error.message;
 			dispatch(uiActions.toggleLoader(false));
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
+		
 		}
 	};
 };
@@ -235,26 +224,21 @@ export const editUserData = (data: User) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "success",
-					title: "Success!",
+					title: "Success",
 					message: "Edit user successfully!",
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
+		
 		} catch (error) {
 			if (error instanceof Error) messageError = error.message;
 			dispatch(uiActions.toggleLoader(false));
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -288,13 +272,10 @@ export const deleteUser = (idUser: string, idToken: string) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -326,26 +307,20 @@ export const deleteFromFirebase = (idToken: string) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "success",
-					title: "Success!",
+					title: "Success",
 					message: "Delete user successfully!",
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		} catch (error) {
 			if (error instanceof Error) messageError = error.message;
 			dispatch(uiActions.toggleLoader(false));
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
@@ -396,13 +371,10 @@ export const changePasswordUser = (userData: User, password: string) => {
 				dispatch(
 					uiActions.showNotification({
 						status: "success",
-						title: "Success!",
+						title: "Success",
 						message: "Change user password successfully!",
 					})
 				);
-				setTimeout(() => {
-					dispatch(uiActions.clearNotification());
-				}, 3000);
 			});
 			dispatch(uiActions.toggleLoader(false));
 		} catch (error) {
@@ -411,13 +383,10 @@ export const changePasswordUser = (userData: User, password: string) => {
 			dispatch(
 				uiActions.showNotification({
 					status: "error",
-					title: "Error!",
+					title: "Error",
 					message: messageError,
 				})
 			);
-			setTimeout(() => {
-				dispatch(uiActions.clearNotification());
-			}, 3000);
 		}
 	};
 };
