@@ -140,7 +140,7 @@ const UserStatsPage = () => {
                     deleteExpense={deleteExpenseHandler}
                   />
                 );
-              })}{" "}
+              })}
             </TableBody>
           </Table>
         </TableContainer>

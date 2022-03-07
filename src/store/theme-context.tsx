@@ -7,7 +7,7 @@ type ThemeContextObj = {
 
 const localStorageTheme: any = localStorage.getItem("dark");
 const jsonLocalStorageTheme: boolean = JSON.parse(localStorageTheme);
-console.log(jsonLocalStorageTheme);
+
 export const ThemeContext = React.createContext<ThemeContextObj>({
   dark: jsonLocalStorageTheme || false,
   toggleDark: () => {},
