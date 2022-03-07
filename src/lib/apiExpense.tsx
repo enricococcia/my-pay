@@ -1,7 +1,7 @@
 import { FIREBASE_DOMAIN } from "../const";
 import { uiActions } from "../store/ui-slice";
 import { retrieveStoredToken } from "../helper/authHelper";
-import { checkBetweenDate } from "../helper/statsHelper";
+import { checkBetweenDate, toFixedNumber } from "../helper/statsHelper";
 import UserStats from "../components/models/userStats";
 let messageError = "Unknown Error";
 
@@ -47,18 +47,15 @@ export const getUserStats = (
 				let date = new Date(element.date);
 				if (checkBetweenDate(date, 1)) {
 					todayExpenses.push(element);
-					todayExpensesValue =
-						todayExpensesValue + parseFloat(element.cost);
+					todayExpensesValue = toFixedNumber(todayExpensesValue+parseFloat(element.cost), 2);
 				}
 				if (checkBetweenDate(date, 7)) {
 					weekExpenses.push(element);
-					weekExpensesValue =
-						weekExpensesValue + parseFloat(element.cost);
+					weekExpensesValue = toFixedNumber(weekExpensesValue+parseFloat(element.cost), 2);
 				}
 				if (checkBetweenDate(date, 30)) {
 					monthExpenses.push(element);
-					monthExpensesValue =
-						monthExpensesValue + parseFloat(element.cost);
+					monthExpensesValue = toFixedNumber(monthExpensesValue+parseFloat(element.cost), 2);
 				}
 			}
 
@@ -67,8 +64,7 @@ export const getUserStats = (
 				(item) => item.type === "food-drink"
 			);
 			for (const element of expensesFoodAndDrinkResult) {
-				foodDrinkExpensesValue =
-					foodDrinkExpensesValue + parseFloat(element.cost);
+				foodDrinkExpensesValue = toFixedNumber(foodDrinkExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			let hobbiesExpensesValue = 0;
@@ -76,8 +72,7 @@ export const getUserStats = (
 				(item) => item.type === "hobbies"
 			);
 			for (const element of expensesHobbiesResult) {
-				hobbiesExpensesValue =
-					hobbiesExpensesValue + parseFloat(element.cost);
+				hobbiesExpensesValue = toFixedNumber(hobbiesExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			let clothesExpensesValue = 0;
@@ -85,8 +80,7 @@ export const getUserStats = (
 				(item) => item.type === "clothes"
 			);
 			for (const element of expensesClothesResult) {
-				clothesExpensesValue =
-					clothesExpensesValue + parseFloat(element.cost);
+				clothesExpensesValue = toFixedNumber(clothesExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			let marketExpensesValue = 0;
@@ -94,8 +88,7 @@ export const getUserStats = (
 				(item) => item.type === "market"
 			);
 			for (const element of expensesMarketResult) {
-				marketExpensesValue =
-					marketExpensesValue + parseFloat(element.cost);
+				marketExpensesValue = toFixedNumber(marketExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			let onlineExpensesValue = 0;
@@ -103,8 +96,7 @@ export const getUserStats = (
 				(item) => item.type === "online"
 			);
 			for (const element of expensesOnlineResult) {
-				onlineExpensesValue =
-					onlineExpensesValue + parseFloat(element.cost);
+				onlineExpensesValue = toFixedNumber(onlineExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			let otherExpensesValue = 0;
@@ -112,8 +104,7 @@ export const getUserStats = (
 				(item) => item.type === "other"
 			);
 			for (const element of expensesOtherResult) {
-				otherExpensesValue =
-					otherExpensesValue + parseFloat(element.cost);
+				otherExpensesValue = toFixedNumber(otherExpensesValue+parseFloat(element.cost), 2);
 			}
 
 			return {

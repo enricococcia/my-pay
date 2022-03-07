@@ -8,3 +8,8 @@ export const checkBetweenDate = (date: Date, days: number) => {
 	}
 	return false;
 } 
+
+export const toFixedNumber = (num: number, digits: number) => {
+	let newNumber = num.toFixed(digits);
+	return +newNumber;
+}

@@ -14,7 +14,7 @@ import {
 	Paper,
   } from "@mui/material";
 
-const UserForm: React.FC<{
+const UserStatsTableItem: React.FC<{
   id: string;
   title: string;
   cost?: number;
@@ -86,4 +86,4 @@ const UserForm: React.FC<{
   );
 };
 
-export default UserForm;
+export default UserStatsTableItem;

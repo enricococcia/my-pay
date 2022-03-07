@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { retrieveStoredToken } from "../helper/authHelper";
+import User from "../components/models/user";
 
 let initialToken;
 const tokenData = retrieveStoredToken();
@@ -8,19 +9,16 @@ if (tokenData) {
 }
 
 const localStorageUser: any = localStorage.getItem("user");
-const jsonLocalStorageUser: any = JSON.parse(localStorageUser);
-let initialUser;
-if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser === null) {
-    initialUser = null;
-} else if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser !== null) {
+const jsonLocalStorageUser: User = JSON.parse(localStorageUser);
+let  initialUser: User = jsonLocalStorageUser;
+
+if(typeof jsonLocalStorageUser === "object" && jsonLocalStorageUser !== null) {
 	if( Array.isArray(jsonLocalStorageUser)) {
 		initialUser = jsonLocalStorageUser[0];
 	} else {
 		initialUser = jsonLocalStorageUser;
 	}
-} else {
-    initialUser = jsonLocalStorageUser;
-}
+} 
 
 const authSlice = createSlice({
 	name: "auth",

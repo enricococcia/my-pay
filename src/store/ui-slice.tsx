@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Notification from "../components/models/notification";
+
+const initialNotification: Notification = { status: "", title: "", message: "" };
 
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
     barIsVisible: false,
-    notification: {
-      status: "",
-      title: "",
-      message: "",
-    },
+    notification: initialNotification,
     loaderIsVisible: false,
   },
   reducers: {
@@ -22,11 +21,7 @@ const uiSlice = createSlice({
     },
     clearNotification(state) {
       state.barIsVisible = false;
-      state.notification = {
-        status: "",
-        title: "",
-        message: "",
-      };
+      state.notification = initialNotification;
     },
     toggleLoader(state, action) {
       state.loaderIsVisible = action.payload;

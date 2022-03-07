@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "./UserStats.module.css";
 import { getUserStats, deleteExpense } from "../../lib/apiExpense";
@@ -26,18 +26,20 @@ const UserStatsPage = () => {
   const [isAllExpensesVisible, setIsAllExpensesVisible] = useState(false);
   const dispatch = useDispatch();
 
-  const getUserStatFn = () => {
+  const getUserStatFn = useCallback(() => {
     dispatch(getUserStats(userData.uid, setExpensesData));
+  }, [dispatch, userData.uid]);
+
+  const deleteExpenseHandler = (id: string) => {
+    dispatch(deleteExpense(id, getUserStatFn));
   };
 
   useEffect(() => {
     getUserStatFn();
     return () => {};
-  }, [getUserStats, userData.uid, dispatch]);
+  }, [getUserStatFn]);
 
-  const deleteExpenseHandler = (id: string) => {
-    dispatch(deleteExpense(id, getUserStatFn));
-  };
+
 
   return (
     <div className={classes.userStats}>
@@ -48,7 +50,7 @@ const UserStatsPage = () => {
           <label className={classes.labelProgress} htmlFor="budgetprogress">
             Budget progress{" "}
             <strong>
-              {((+expensesData.month.value * 100) / userData.budget).toFixed(2)}%
+              {((+expensesData.month.value * 100) / +userData.budget).toFixed(2)}%
             </strong>{" "}
             ({expensesData.month.value}€ / {userData.budget}
             €):
@@ -57,7 +59,7 @@ const UserStatsPage = () => {
           <LinearProgress
             variant="determinate"
             color="warning"
-            value={(+expensesData.month.value * 100) / userData.budget}
+            value={(+expensesData.month.value * 100) / +userData.budget}
           />
         </>
       )}
