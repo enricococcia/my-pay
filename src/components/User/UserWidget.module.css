@@ -23,8 +23,15 @@
 	transition: top 0.3s ease-out;
 }
 
+.widgetInfoSwitch {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
 .widgetContainer .widget .widgetInfo {
 	padding: 15px;
+	padding-top: 3.5rem;
 }
 
 .widgetContainer .widget .widgetInfo svg {

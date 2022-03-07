@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useScroll from "../../hooks/use-scroll";
 import { deleteUser } from "../../lib/apiUser";
-import { Button } from "@mui/material";
+import { Button, FormGroup, FormControlLabel, Switch } from "@mui/material";
 import Modal from "../UI/Modal";
 import classes from "./UserWidget.module.css";
 import ChangePasswordForm from "./ChangePasswordForm";
 import { RootState } from "../../store";
+import { ThemeContext } from "../../store/theme-context";
 
 const UserWidget = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
   const [widgetClass, setWidgetClass] = useState(classes.widget);
   const isScrolledObj = useScroll();
+
+  const themeCtx = useContext(ThemeContext);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    themeCtx.toggleDark(event.target.checked);
+    console.log(themeCtx.dark);
+  };
 
   useEffect(() => {
     if (isScrolledObj.scroll) {
@@ -21,8 +29,8 @@ const UserWidget = () => {
       setWidgetClass(classes.widget);
     }
     return () => {
-		setWidgetClass("");
-	};
+      setWidgetClass("");
+    };
   }, [isScrolledObj.scroll]);
 
   const [isDeleteModalOpened, setDeleteModalOpened] = useState(false);
@@ -32,6 +40,16 @@ const UserWidget = () => {
     <>
       <div className={classes.widgetContainer}>
         <div className={widgetClass}>
+          <div className={classes.widgetInfoSwitch}>
+            <FormGroup>
+              <FormControlLabel
+                control={<Switch checked={themeCtx.dark}
+                onChange={handleChange}/>}
+                label="Dark mode"
+              />
+            </FormGroup>
+          </div>
+          
           <div className={classes.widgetInfo}>
             <h1 className={classes.name}>{userData.name}</h1>
             <h2 className={classes.userName}>{userData.userName}</h2>
