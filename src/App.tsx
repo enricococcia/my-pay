@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout";
 import { RootState } from "./store";
 import { appRouter } from "./router";
 import { ThemeContext } from "./store/theme-context";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const App = () => {
   const tokenData = retrieveStoredToken();
@@ -15,14 +16,13 @@ const App = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
   const themeCtx = useContext(ThemeContext);
 
-
   useEffect(() => {
-		if (themeCtx.dark) {
+    if (themeCtx.dark) {
       document.body.classList.add("dark");
-		} else {
+    } else {
       document.body.classList.remove("dark");
     }
-	}, [themeCtx]);
+  }, [themeCtx]);
 
   useEffect(() => {
     if (tokenData) {
@@ -40,20 +40,28 @@ const App = () => {
     return !isLoggedIn ? navigateToLogin : el;
   };
 
+  const theme = createTheme({
+    palette: {
+      mode: themeCtx.dark ? "dark" : "light",
+    },
+  });
+
   return (
-    <Layout>
-      <Routes>
-        {appRouter.map((item) => {
-          return (
-            <Route
-              key={item.id}
-              path={item.path}
-              element={navigateTo(item.name, item.element)}
-            />
-          );
-        })}
-      </Routes>
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Routes>
+          {appRouter.map((item) => {
+            return (
+              <Route
+                key={item.id}
+                path={item.path}
+                element={navigateTo(item.name, item.element)}
+              />
+            );
+          })}
+        </Routes>
+      </Layout>
+    </ThemeProvider>
   );
 };
 

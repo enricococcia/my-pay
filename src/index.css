@@ -15,6 +15,8 @@ body {
 	--color-button-hover: var(--color-light-grey);
 	--color-selection: var(--color-primary);
 	--color-input-background: #f7f5ef;
+	--color-background-modal: var(--color-background);
+	--color-background-backdrop: rgba(0, 0, 0, 0.75);
 }
 
 body {
@@ -27,6 +29,9 @@ body {
 
 body.dark {
 	--color-background: rgb(110, 110, 110);
+	--color-background-modal: #121212;
+	--color-foreground: white;
+	--color-background-backdrop: rgba(105, 105, 105, 0.75);
 }
 
 * {

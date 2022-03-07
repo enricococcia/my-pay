@@ -7,6 +7,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Paper,
 } from "@mui/material";
 import Expense from "../models/expense";
 import { RootState } from "../../store";
@@ -87,7 +88,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
   }
 
   return (
-    <div className={classes.newExpense}>
+    <Paper className={classes.newExpense}>
       <h3>Add a new expense</h3>
       <form onSubmit={submitHandler}>
         <div className={classes.newExpenseControl}>
@@ -170,7 +171,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
           </Button>
         </div>
       </form>
-    </div>
+    </Paper>
   );
 };
 

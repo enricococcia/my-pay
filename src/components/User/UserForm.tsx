@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { editUserData } from "../../lib/apiUser";
 import useInput from "../../hooks/use-input";
-import { TextField, Button, Slider } from "@mui/material";
+import { TextField, Button, Slider, Paper } from "@mui/material";
 import classes from "./UserForm.module.css";
 import { RootState } from "../../store";
 
@@ -61,7 +61,7 @@ const UserForm = () => {
   }
 
   return (
-    <div className={classes.user}>
+    <Paper className={classes.user}>
       <h3>Edit profile</h3>
       <form onSubmit={submitHandler}>
         <TextField
@@ -118,7 +118,7 @@ const UserForm = () => {
           </Button>
         </div>
       </form>
-    </div>
+    </Paper>
   );
 };
 

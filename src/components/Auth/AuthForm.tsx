@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import useInput from "../../hooks/use-input";
 import classes from "./AuthForm.module.css";
-import { Button, TextField } from "@mui/material";
+import { Button, Paper, TextField } from "@mui/material";
 import { validateEmail } from "../../helper/authHelper";
 import { authUser } from "../../lib/apiUser";
 
@@ -49,7 +49,7 @@ const AuthForm = () => {
   }
 
   return (
-    <section className={classes.auth}>
+    <Paper className={classes.auth}>
       <h3>{isLogin ? "Login" : "Sign Up"}</h3>
       <form onSubmit={submitHandler}>
         <TextField
@@ -91,7 +91,7 @@ const AuthForm = () => {
           </Button>
         </div>
       </form>
-    </section>
+    </Paper>
   );
 };
 

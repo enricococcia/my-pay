@@ -42,7 +42,7 @@ const UserStatsPage = () => {
 
 
   return (
-    <div className={classes.userStats}>
+    <Paper className={classes.userStats}>
       <h3>Hi {userData.name}, here your expenses</h3>
 
       {expensesData?.month.value && (
@@ -145,7 +145,7 @@ const UserStatsPage = () => {
           </Table>
         </TableContainer>
       )}
-    </div>
+    </Paper>
   );
 };
 

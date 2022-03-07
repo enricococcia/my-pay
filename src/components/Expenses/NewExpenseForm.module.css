@@ -1,8 +1,6 @@
 .newExpense {
-  background-color: white;
-  padding: 1rem 4rem;
-  box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
   margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .newExpense h3 {

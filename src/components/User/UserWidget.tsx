@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useScroll from "../../hooks/use-scroll";
 import { deleteUser } from "../../lib/apiUser";
-import { Button, FormGroup, FormControlLabel, Switch } from "@mui/material";
+import { Button, FormGroup, FormControlLabel, Switch, Paper } from "@mui/material";
 import Modal from "../UI/Modal";
 import classes from "./UserWidget.module.css";
 import ChangePasswordForm from "./ChangePasswordForm";
@@ -19,7 +19,6 @@ const UserWidget = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     themeCtx.toggleDark(event.target.checked);
-    console.log(themeCtx.dark);
   };
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const UserWidget = () => {
   return (
     <>
       <div className={classes.widgetContainer}>
-        <div className={widgetClass}>
+        <Paper className={widgetClass}>
           <div className={classes.widgetInfoSwitch}>
             <FormGroup>
               <FormControlLabel
@@ -69,7 +68,7 @@ const UserWidget = () => {
               Delete
             </Button>
           </div>
-        </div>
+        </Paper>
       </div>
       {isEditModalOpened && (
         <Modal onClose={() => setEditModalOpened(false)}>

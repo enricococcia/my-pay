@@ -1,15 +1,11 @@
 .user {
 	width: 100%;
-	background-color: white;
 	padding: 1rem 1rem 0 1rem;
-	color: var(--color-foreground);
-    box-shadow: 2px 2px 4px 1px rgb(0 0 0 / 29%);
     margin-bottom: 1rem;
 }
 
 .user h1 {
 	text-align: center;
-	color: var(--color-foreground);
 }
 
 .user form {
@@ -60,6 +56,5 @@
 
 .progressBudgetContainer p {
     display: block;
-    color: var(--color-foreground);
     margin-bottom: 0.5rem;
 }
