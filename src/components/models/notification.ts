@@ -1,7 +1,7 @@
-class Notification {
-	status?: string = "";
-	title?: string = "";
-	message?: string = "";
+interface Notification {
+  status?: string;
+  title?: string;
+  message?: string;
 }
 
 export default Notification;

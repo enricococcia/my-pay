@@ -23,7 +23,7 @@ const App = () => {
   const navigateToLogin = <Navigate to={`${process.env.PUBLIC_URL}/login`} />;
 
   const navigateTo = (item: string, el: React.ReactNode) => {
-    if (item === "Login" || item === "Not Found") {
+    if (item === "Login") {
       return isLoggedIn ? navigateToHome : el;
     }
     return !isLoggedIn ? navigateToLogin : el;

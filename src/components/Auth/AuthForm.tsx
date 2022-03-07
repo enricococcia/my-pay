@@ -15,7 +15,7 @@ const AuthForm = () => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmail,
-  } = useInput((value) => validateEmail(value), "");
+  } = useInput((value) => validateEmail(value));
 
   const {
     value: enteredPassword,
@@ -24,7 +24,7 @@ const AuthForm = () => {
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: resetPassword,
-  } = useInput((value) => value.trim() !== "" && value.trim().length > 8, "");
+  } = useInput((value) => value.trim() !== "" && value.trim().length > 8);
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -71,7 +71,7 @@ const AuthForm = () => {
           label="Password"
           variant="outlined"
           value={enteredPassword}
-		  className={classes.authControl}
+		      className={classes.authControl}
           onChange={passwordChangeHandler}
           onBlur={passwordBlurHandler}
           error={passwordInputHasError}

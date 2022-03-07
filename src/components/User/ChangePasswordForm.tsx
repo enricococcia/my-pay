@@ -21,7 +21,7 @@ const ChangePasswordForm: React.FC<{
     hasError: passwordInputHasError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-  } = useInput((value) => value.trim().length > 8, "");
+  } = useInput((value) => value.trim().length > 8);
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();

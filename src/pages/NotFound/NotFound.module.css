@@ -1,0 +1,13 @@
+.notFound {
+    text-align: center;
+}
+
+.notFound .header h1 {
+    font-size: 2rem;
+}
+
+.notFound .header svg {
+    width: 75px;
+    height: 50px;
+    fill: var(--color-primary);
+}

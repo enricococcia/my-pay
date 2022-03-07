@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import MainNavigation from "./MainNavigation";
-import {Snackbar, Alert} from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
 import { uiActions } from "../../store/ui-slice";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -21,7 +21,7 @@ const Layout: React.FC<{}> = (props) => {
   );
 
   const handleClose = () => {
-    dispatch(uiActions.clearNotification())
+    dispatch(uiActions.clearNotification());
   };
 
   const action = (
@@ -45,15 +45,23 @@ const Layout: React.FC<{}> = (props) => {
           open={isNotificationBarVisible}
           autoHideDuration={6000}
           onClose={handleClose}
-		  action={action}
-		  anchorOrigin={{
-			  vertical: "top",
-			  horizontal: "right"
-		  }}>
-			<Alert onClose={handleClose} severity={notificationData?.status === "error" ? "error" : "success"} sx={{ width: '100%' }}>
-				<strong>{notificationData?.title}</strong>: {notificationData?.message}
-			</Alert>
-			  </Snackbar>
+          action={action}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          <Alert
+            onClose={handleClose}
+            severity={
+              notificationData?.status === "error" ? "error" : "success"
+            }
+            sx={{ width: "100%" }}
+          >
+            <strong>{notificationData?.title}</strong>:{" "}
+            {notificationData?.message}
+          </Alert>
+        </Snackbar>
       )}
       <MainNavigation />
       <main>{props.children}</main>

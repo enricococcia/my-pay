@@ -9,7 +9,7 @@ import classes from "./Home.module.css";
 import { Paper, Stack, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -82,10 +82,9 @@ const Home = () => {
 
   return (
     <>
-      <div className="container"  style={{ textAlign: "center"}}>
+      <div className="container" style={{ textAlign: "center" }}>
         <Button
           size="large"
-         
           onClick={() => navigate(`${process.env.PUBLIC_URL}/create`)}
           endIcon={<AddIcon />}
         >
@@ -93,30 +92,34 @@ const Home = () => {
         </Button>
       </div>
       <div className="container">
-        <Stack
-          spacing={2}
-          direction={{ xs: "column", sm: "row" }}
-          justifyContent={{ xs: "stretch", sm: "space-between" }}
-          alignItems={{ xs: "stretch", sm: "center" }}
-          className={classes.stack}
-        >
-          <Item>
-            {" "}
-            <h3>Types Chart</h3>
-            <Pie data={data} />
-          </Item>
-          <Item>
-            {" "}
-            <h3>Today's expenses:</h3>
-            <p className={classes.budgetToday}>{expensesData?.today.value}€</p>
-          </Item>
-          <Item>
-            <h3>Budget remaining:</h3>
-            <p className={classes.budgetRemaining}>
-              {+userData.budget - +monthExpenses}€
-            </p>
-          </Item>
-        </Stack>
+        <Paper>
+          <Stack
+            spacing={2}
+            direction={{ xs: "column", sm: "row" }}
+            justifyContent={{ xs: "stretch", sm: "space-between" }}
+            alignItems={{ xs: "stretch", sm: "center" }}
+            className={classes.stack}
+          >
+            <Item>
+              {" "}
+              <h3>Types Chart</h3>
+              <Pie data={data} />
+            </Item>
+            <Item>
+              {" "}
+              <h3>Today's expenses:</h3>
+              <p className={classes.budgetToday}>
+                {expensesData?.today.value}€
+              </p>
+            </Item>
+            <Item>
+              <h3>Budget remaining:</h3>
+              <p className={classes.budgetRemaining}>
+                {+userData.budget - +monthExpenses}€
+              </p>
+            </Item>
+          </Stack>
+        </Paper>
       </div>{" "}
     </>
   );

@@ -21,7 +21,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
     valueChangeHandler: titleChangeHandler,
     inputBlurHandler: titleBlurHandler,
     reset: resetTitle,
-  } = useInput((value) => value.trim().length < 40, "");
+  } = useInput((value) => value.trim().length < 40);
 
   const {
     value: enteredDate,
@@ -30,7 +30,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
     valueChangeHandler: dateChangeHandler,
     inputBlurHandler: dateBlurHandler,
     reset: resetDate,
-  } = useInput((value) => value.trim() !== "", "");
+  } = useInput((value) => value.trim() !== "");
 
   const {
     value: enteredType,
@@ -39,7 +39,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
     valueChangeHandler: typeChangeHandler,
     inputBlurHandler: typeBlurHandler,
     reset: resetType,
-  } = useInput((value) => value.trim() !== "", "");
+  } = useInput((value) => value.trim() !== "");
 
   const {
     value: enteredCost,
@@ -48,7 +48,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
     valueChangeHandler: costChangeHandler,
     inputBlurHandler: costBlurHandler,
     reset: resetCost,
-  } = useInput((value) => +value > 0, "");
+  } = useInput((value) => +value > 0);
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();

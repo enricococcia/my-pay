@@ -24,6 +24,7 @@ import { appRouter } from "../../router";
 const standardPages = appRouter.filter(
   (item) => item.type === "standard" && item.isVisible
 );
+
 const settingsPages = appRouter.filter(
   (item) => item.type === "profile" && item.isVisible
 );
@@ -38,6 +39,7 @@ const MainNavigation = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -45,15 +47,14 @@ const MainNavigation = () => {
   const handleCloseNavMenu = (page?: string) => {
     setAnchorElNav(null);
     if (page) {
-      navigate(`${process.env.PUBLIC_URL}${page}`);
+      navigate(page);
     }
- 
   };
 
   const handleCloseUserMenu = (page?: string) => {
     setAnchorElUser(null);
     if (page) {
-      navigate(`${process.env.PUBLIC_URL}${page}`);
+      navigate(page);
     }
   };
 
@@ -176,11 +177,14 @@ const MainNavigation = () => {
                 </MenuItem>
               ))}
               <MenuItem
-                  key="logout"
-                  onClick={() => dispatch(authActions.logout())}
-                >
-                  <Typography>Logout</Typography>
-                </MenuItem> 
+                key="logout"
+                onClick={() => {
+                  handleCloseUserMenu();
+                  dispatch(authActions.logout());
+                }}
+              >
+                <Typography>Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

@@ -4,8 +4,10 @@ import NewExpense from "./pages/NewExpense/NewExpense";
 import Stats from "./pages/Stats/Stats";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound/NotFound";
+import Router from "./components/models/router";
 
-export const appRouter = [
+export const appRouter:Router[] = [
   {
     id: nextId(),
     isVisible: true,
@@ -52,6 +54,6 @@ export const appRouter = [
     type: "standard",
     path: `${process.env.PUBLIC_URL}/*`,
     name: "Not Found",
-    element: <Home />,
+    element: <NotFound />,
   }
 ];
