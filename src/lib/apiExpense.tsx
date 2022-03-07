@@ -188,6 +188,13 @@ export const addExpense = (expenseData: {}, callback?: () => void) => {
 		try {
 			await sendRequest();
 			dispatch(uiActions.toggleLoader(false));
+			dispatch(
+				uiActions.showNotification({
+					status: "success",
+					title: "Success!",
+					message: "Expense added correctly",
+				})
+			);
 			if (callback) {
 				callback();
 			}
@@ -228,6 +235,13 @@ export const deleteExpense = (id: string, callback?: () => void) => {
 		try {
 			await sendRequest();
 			dispatch(uiActions.toggleLoader(false));
+			dispatch(
+				uiActions.showNotification({
+					status: "success",
+					title: "Delete!",
+					message: "Expense deleted correctly",
+				})
+			);
 			if (callback) {
 				callback();
 			}

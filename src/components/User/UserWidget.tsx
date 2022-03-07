@@ -8,6 +8,7 @@ import classes from "./UserWidget.module.css";
 import ChangePasswordForm from "./ChangePasswordForm";
 import { RootState } from "../../store";
 import { ThemeContext } from "../../store/theme-context";
+import { uiActions } from "../../store/ui-slice";
 
 const UserWidget = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
@@ -19,6 +20,17 @@ const UserWidget = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     themeCtx.toggleDark(event.target.checked);
+    let switchMessage = "Dark mode activated!"
+    if(!event.target.checked) {
+      switchMessage = "Dark mode deactivated!"
+    }
+    dispatch(
+      uiActions.showNotification({
+        status: "success",
+        title: "Success",
+        message: switchMessage,
+      })
+    );
   };
 
   useEffect(() => {
