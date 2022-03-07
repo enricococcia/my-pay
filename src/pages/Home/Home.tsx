@@ -22,7 +22,9 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getUserStats(userData.uid, setExpensesData));
-    return () => {};
+    return () => {
+      setExpensesData((prevState) => prevState);
+    };
   }, [userData.uid, dispatch]);
 
   const Item = styled(Paper)(({ theme }) => ({

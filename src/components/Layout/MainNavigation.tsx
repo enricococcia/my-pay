@@ -19,16 +19,15 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { RootState } from "../../store";
 import { authActions } from "../../store/auth-slice";
 import classes from "./MainNavigation.module.css";
+import { appRouter } from "../../router";
 
-const pages = [
-  { url: "/", label: "Home" },
-  { url: "/stats", label: "Stats" },
-  { url: "/create", label: "New" },
-];
-const settings = [
-  { url: "/profile", label: "Profile" },
-  { url: "/logout", label: "Logout" },
-];
+const standardPages = appRouter.filter(
+  (item) => item.type === "standard" && item.isVisible
+);
+const settingsPages = appRouter.filter(
+  (item) => item.type === "profile" && item.isVisible
+);
+
 const MainNavigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,21 +44,16 @@ const MainNavigation = () => {
 
   const handleCloseNavMenu = (page?: string) => {
     setAnchorElNav(null);
-    if (page && page !== "/logout") {
+    if (page) {
       navigate(`${process.env.PUBLIC_URL}${page}`);
     }
-    if (page === "/logout") {
-      dispatch(authActions.logout());
-    }
+ 
   };
 
   const handleCloseUserMenu = (page?: string) => {
     setAnchorElUser(null);
-    if (page && page !== "/logout") {
+    if (page) {
       navigate(`${process.env.PUBLIC_URL}${page}`);
-    }
-    if (page === "/logout") {
-      dispatch(authActions.logout());
     }
   };
 
@@ -110,12 +104,12 @@ const MainNavigation = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {standardPages.map((page) => (
                 <MenuItem
-                  key={page.label}
-                  onClick={() => handleCloseNavMenu(page.url)}
+                  key={page.id}
+                  onClick={() => handleCloseNavMenu(page.path)}
                 >
-                  <Typography textAlign="center">{page.label}</Typography>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -132,13 +126,13 @@ const MainNavigation = () => {
           </Typography>
           {isLoggedIn && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
+              {standardPages.map((page) => (
                 <Button
-                  key={page.label}
-                  onClick={() => handleCloseNavMenu(page.url)}
+                  key={page.id}
+                  onClick={() => handleCloseNavMenu(page.path)}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {page.label}
+                  {page.name}
                 </Button>
               ))}
             </Box>
@@ -173,14 +167,20 @@ const MainNavigation = () => {
               open={Boolean(anchorElUser)}
               onClose={() => handleCloseUserMenu()}
             >
-              {settings.map((setting) => (
+              {settingsPages.map((page) => (
                 <MenuItem
-                  key={setting.label}
-                  onClick={() => handleCloseUserMenu(setting.url)}
+                  key={page.id}
+                  onClick={() => handleCloseUserMenu(page.path)}
                 >
-                  <Typography textAlign="center">{setting.label}</Typography>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
+              <MenuItem
+                  key="logout"
+                  onClick={() => dispatch(authActions.logout())}
+                >
+                  <Typography>Logout</Typography>
+                </MenuItem> 
             </Menu>
           </Box>
         </Toolbar>

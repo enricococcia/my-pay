@@ -73,7 +73,7 @@ const AuthForm = () => {
           value={enteredPassword}
 		  className={classes.authControl}
           onChange={passwordChangeHandler}
-          onBlur={passwordChangeHandler}
+          onBlur={passwordBlurHandler}
           error={passwordInputHasError}
           helperText={
             passwordInputHasError &&
