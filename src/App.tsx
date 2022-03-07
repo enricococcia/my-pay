@@ -10,6 +10,7 @@ import { RootState } from "./store";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Stats from "./pages/Stats/Stats";
+
 const App = () => {
 
 	const tokenData = retrieveStoredToken();
