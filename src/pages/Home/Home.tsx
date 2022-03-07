@@ -10,6 +10,7 @@ import { Paper, Stack, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import { categories } from "../../const/categories";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -34,15 +35,16 @@ const Home = () => {
     textAlign: "center",
   }));
 
+  const arrayLabel:string[] = [];
+  const arrayBackgroundColor = [];
+  const arrayBorderColor = [];
+  for (const element of categories) {
+    arrayLabel.push(element.label);
+    arrayBackgroundColor.push(element.backgroundColor);
+    arrayBorderColor.push(element.borderColor);
+  }
   const data = {
-    labels: [
-      "Food and drink",
-      "Hobbies",
-      "Clothes",
-      "Market",
-      "Shopping Online",
-      "Other",
-    ],
+    labels: arrayLabel,
     datasets: [
       {
         label: "# of Expenses",
@@ -54,22 +56,8 @@ const Home = () => {
           expensesData?.info?.online.value,
           expensesData?.info?.other.value,
         ],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
+        backgroundColor: arrayBackgroundColor,
+        borderColor: arrayBorderColor,
         borderWidth: 1,
       },
     ],

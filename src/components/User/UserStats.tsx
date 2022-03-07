@@ -39,8 +39,6 @@ const UserStatsPage = () => {
     return () => {};
   }, [getUserStatFn]);
 
-
-
   return (
     <Paper className={classes.userStats}>
       <h3>Hi {userData.name}, here your expenses</h3>

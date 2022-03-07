@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Expense from "../models/expense";
 import { RootState } from "../../store";
+import { categories } from "../../const/categories";
 import classes from "./NewExpenseForm.module.css";
 
 const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
@@ -135,12 +136,9 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
               required
             >
               <MenuItem value=""></MenuItem>
-              <MenuItem value="food-drink">Food and drink</MenuItem>
-              <MenuItem value="hobbies">Hobbies</MenuItem>
-              <MenuItem value="clothes">Clothes</MenuItem>
-              <MenuItem value="market">Market</MenuItem>
-              <MenuItem value="online">Shopping Online</MenuItem>
-              <MenuItem value="other">Other</MenuItem>
+              {categories.map((item) => {
+                return <MenuItem value={item.id}>{item.icon} {item.label}</MenuItem>
+              })}
             </Select>
           </FormControl>
         </div>
