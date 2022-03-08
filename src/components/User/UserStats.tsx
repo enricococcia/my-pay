@@ -5,6 +5,8 @@ import { getUserStats, deleteExpense } from "../../lib/apiExpense";
 import { RootState } from "../../store";
 import UserStats from "../models/userStats";
 import UserStatsTableItem from "./UserStatsTableItem";
+import ExpensesTable from "../Expenses/ExpensesTable";
+
 import {
   LinearProgress,
   Button,
@@ -16,7 +18,6 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import UserStatsExpenseItem from "./UserStatsExpenseItem";
 
 const UserStatsPage = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
@@ -30,8 +31,10 @@ const UserStatsPage = () => {
     dispatch(getUserStats(userData.uid, setExpensesData));
   }, [dispatch, userData.uid]);
 
-  const deleteExpenseHandler = (id: string) => {
-    dispatch(deleteExpense(id, getUserStatFn));
+  const deleteExpenseHandler = (id: string[]) => {
+      for(const element of id) {
+        dispatch(deleteExpense(element, getUserStatFn));
+      }
   };
 
   useEffect(() => {
@@ -48,7 +51,10 @@ const UserStatsPage = () => {
           <label className={classes.labelProgress} htmlFor="budgetprogress">
             Budget progress{" "}
             <strong>
-              {((+expensesData.month.value * 100) / +userData.budget).toFixed(2)}%
+              {((+expensesData.month.value * 100) / +userData.budget).toFixed(
+                2
+              )}
+              %
             </strong>{" "}
             ({expensesData.month.value}€ / {userData.budget}
             €):
@@ -112,36 +118,8 @@ const UserStatsPage = () => {
         </Button>
       </div>
 
-      {isAllExpensesVisible && (
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell align="right">Title</TableCell>
-                <TableCell align="right">Category</TableCell>
-                <TableCell align="right">Cost</TableCell>
-                <TableCell align="right"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {expensesData?.result.map((item) => {
-                return (
-                  <UserStatsExpenseItem
-                    key={item.eid}
-                    id={item.id}
-                    eid={item.eid}
-                    date={item.date}
-                    title={item.title}
-                    type={item.type}
-                    cost={item.cost}
-                    deleteExpense={deleteExpenseHandler}
-                  />
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+      {isAllExpensesVisible && expensesData && expensesData.result && (
+        <ExpensesTable title="All Expenses" result={expensesData!.result} deleteExpense={deleteExpenseHandler} />
       )}
     </Paper>
   );

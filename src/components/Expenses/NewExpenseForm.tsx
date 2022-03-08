@@ -137,7 +137,7 @@ const NewExpenseForm: React.FC<{ onSubmit: (data: {}) => void }> = (props) => {
             >
               <MenuItem value=""></MenuItem>
               {categories.map((item) => {
-                return <MenuItem value={item.id}>{item.icon} {item.label}</MenuItem>
+                return <MenuItem key={item.id} value={item.id}>{item.icon} {item.label}</MenuItem>
               })}
             </Select>
           </FormControl>

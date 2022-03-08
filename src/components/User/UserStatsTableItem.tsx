@@ -2,16 +2,11 @@ import Modal from "../UI/Modal";
 import classes from "./UserStats.module.css";
 import InfoIcon from "@mui/icons-material/Info";
 import Expense from "../models/expense";
-import UserStatsExpenseItem from "./UserStatsExpenseItem";
+import ExpensesTable from "../Expenses/ExpensesTable";
 import {
 	Button,
-	Table,
-	TableBody,
 	TableCell,
-	TableContainer,
-	TableHead,
 	TableRow,
-	Paper,
   } from "@mui/material";
 
 const UserStatsTableItem: React.FC<{
@@ -20,11 +15,12 @@ const UserStatsTableItem: React.FC<{
   cost?: number;
   result?: Expense[];
   toggleModal: (id: string) => void;
-  deleteExpense: (id: string) => void;
+  deleteExpense: (id: string[]) => void;
   idModalOpened: string;
 }> = (props) => {
   return (
     <>
+
       <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
         <TableCell component="th" scope="row">
           {props.title}
@@ -46,35 +42,7 @@ const UserStatsTableItem: React.FC<{
             (props.result?.length === 0 && <p>No result</p>)}
 
           {props.result && props.result?.length > 0 && (
-            <TableContainer component={Paper}>
-			<Table sx={{ minWidth: 650 }} aria-label="simple table">
-			  <TableHead>
-				<TableRow>
-				  <TableCell>Date</TableCell>
-				  <TableCell align="right">Title</TableCell>
-				  <TableCell align="right">Category</TableCell>
-				  <TableCell align="right">Cost</TableCell>
-				  <TableCell align="right"></TableCell>
-				</TableRow>
-			  </TableHead>
-			  <TableBody>
-              {props?.result.map((item) => {
-                return (
-                  <UserStatsExpenseItem
-                    key={item.id}
-                    id={item.id}
-                    eid={item.eid}
-                    date={item.date}
-                    title={item.title}
-                    type={item.type}
-                    cost={item.cost}
-                    deleteExpense={props.deleteExpense}
-                  />
-                );
-              })}
-           </TableBody>
-          </Table>
-        </TableContainer>
+            <ExpensesTable title="All Expenses" result={props!.result} deleteExpense={props.deleteExpense} />
           )}
 
           <span className={classes.modalActions}>
