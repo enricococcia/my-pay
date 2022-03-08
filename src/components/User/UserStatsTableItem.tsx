@@ -37,12 +37,12 @@ const UserStatsTableItem: React.FC<{
       </TableRow>
       {props.idModalOpened === props.id && (
         <Modal onClose={() => props.toggleModal("")}>
-          <h3>{props.title} Expenses</h3>
+          <h3>{props.title}</h3>
           {!props.result?.length ||
             (props.result?.length === 0 && <p>No result</p>)}
 
           {props.result && props.result?.length > 0 && (
-            <ExpensesTable title="All Expenses" result={props!.result} deleteExpense={props.deleteExpense} />
+            <ExpensesTable title={`${props.title} expenses`} result={props!.result} deleteExpense={props.deleteExpense} />
           )}
 
           <span className={classes.modalActions}>

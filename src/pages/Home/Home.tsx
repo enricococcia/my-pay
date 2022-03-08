@@ -76,7 +76,7 @@ const Home = () => {
           onClick={() => navigate(`${process.env.PUBLIC_URL}/create`)}
           endIcon={<AddIcon />}
         >
-          Add New Expense
+          New Expense
         </Button>
       </div>
       <div className="container">

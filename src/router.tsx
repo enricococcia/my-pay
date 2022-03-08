@@ -2,6 +2,7 @@ import nextId from "react-id-generator";
 import Home from "./pages/Home/Home";
 import NewExpense from "./pages/NewExpense/NewExpense";
 import Stats from "./pages/Stats/Stats";
+import MotivationalQuotes from "./pages/MotivationalQuotes/MotivationalQuotes";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
@@ -31,6 +32,14 @@ export const appRouter:Router[] = [
     path: `${process.env.PUBLIC_URL}/stats`,
     name: "Stats",
     element: <Stats />,
+  },
+  {
+    id: nextId(),
+    isVisible: true,
+    type: "standard",
+    path: `${process.env.PUBLIC_URL}/motivational-quotes`,
+    name: "Quotes",
+    element: <MotivationalQuotes />,
   },
   {
     id: nextId(),

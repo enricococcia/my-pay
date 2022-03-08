@@ -4,7 +4,7 @@
     margin-bottom: 1rem;
 }
 
-.userStats h1 {
+.userStats h3 {
 	text-align: center;
 	color: var(--color-foreground);
 }

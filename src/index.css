@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 
 body {
-	--color-background: #f3f3f3;
+	--color-background: #dddddd;
 	--color-foreground: #000;
 	--color-primary: #ebb002;
 	--color-secondary: #111;
@@ -11,11 +11,9 @@ body {
 	--color-white: #fff;
 	--color-light-grey: #e3e3e3;
 	--color-link-hover: var(--color-primary);
-	--color-bg-card: var(--color-light-grey);
-	--color-button-hover: var(--color-light-grey);
 	--color-selection: var(--color-primary);
 	--color-input-background: #f7f5ef;
-	--color-background-modal: var(--color-background);
+	--color-background-modal: var(--color-white);
 	--color-background-backdrop: rgba(0, 0, 0, 0.75);
 }
 
@@ -28,7 +26,7 @@ body {
 }
 
 body.dark {
-	--color-background: rgb(110, 110, 110);
+	--color-background: rgb(49, 49, 49);
 	--color-background-modal: #121212;
 	--color-foreground: white;
 	--color-background-backdrop: rgba(105, 105, 105, 0.75);
